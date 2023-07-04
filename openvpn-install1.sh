@@ -10,11 +10,11 @@ function isRoot() {
 	fi
 }
 
-#function tunAvailable() {
-#	if [ ! -e /dev/net/tun ]; then
-#		return 1
-#	fi
-#}
+function tunAvailable() {
+	if [ ! -e /dev/net/tun ]; then
+		return 1
+	fi
+}
 
 function checkOS() {
 	if [[ -e /etc/debian_version ]]; then
@@ -97,10 +97,10 @@ function initialCheck() {
 		echo "Sorry, you need to run this as root"
 		exit 1
 	fi
-#	if ! tunAvailable; then
-#		echo "TUN is not available"
-#		exit 1
-#	fi
+	if ! tunAvailable; then
+		echo "TUN is not available"
+		exit 1
+	fi
 	checkOS
 }
 
